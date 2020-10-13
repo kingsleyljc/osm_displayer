@@ -24,7 +24,9 @@ Display .osm file on the WEB browse, using Echarts and Bmap.
 打开osm_displayer/frontEnd/，在此目录下使用cmd输入npm install并运行
 
 ### Put in your source file 放入源文件
+将你想显示的.osm文件放在osm_displayer/目录下
 
-
+### run the program 开始程序
+点击start.bat（一定要确保Python的环境变量已经配置好了）
 
 
