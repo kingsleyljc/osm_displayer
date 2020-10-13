@@ -171,12 +171,18 @@ def do_osm(osm: str):
     collection = doc.documentElement
     nodes = collection.getElementsByTagName('node')
     content = []
+    ids = []
     for i in nodes:
         lat = i.getAttribute('lat')
         lon = i.getAttribute('lon')
+        the_id = i.getAttribute('id')
         lon,lat = wgs84_to_bd09(float(lon), float(lat))
-        content.append([lon, lat])
+        obj ={'value':[lon,lat],'name':the_id}
+        # content.append([lon, lat])
+        # ids.append(the_id)
+        content.append(obj)
     data = {'content': content}
+    # data = {'content': content,'ids':ids}
 
     with open(curdir + sep + 'data/{}.json'.format(osm.split('.')[0]), 'w+') as f:
         json.dump(data, f)

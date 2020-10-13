@@ -3,11 +3,7 @@
     <el-main>
       <div ref="map" id="map-container"></div>
     </el-main>
-    <el-aside
-      element-loading-text="载入路径中.."
-      element-loading-spinner="el-icon-loading"
-      element-loading-background="rgba(65, 81, 95, 0.6)"
-    >
+    <el-aside>
       <el-tabs stretch>
         <el-tab-pane label="操作栏">
           <i class="el-icon-edit-outline" id="diy"></i>
@@ -19,7 +15,7 @@
           <el-row type="flex">
             <el-input v-model="input" placeholder=".osm"></el-input>
             <el-button type="warning" v-on:click="newOsm"
-              >添加订单路径</el-button
+              >获取OSM文件</el-button
             >
           </el-row>
         </el-tab-pane>
@@ -50,6 +46,12 @@ export default {
           zoom: 21,
           roam: true
         },
+        tooltip: {
+          show: true,
+          trigger: "item",
+          showContent: "true",
+          formatter: "id:{b}\n经纬度：{c}"
+        },
         series: [
           {
             type: "scatter",
@@ -72,7 +74,7 @@ export default {
           var obj = response["content"];
           console.log(obj);
           _this.dataset = obj;
-          _this.centerCoords = obj[0];
+          _this.centerCoords = obj[0]["value"];
         }
       });
       console.log(this.dataset);
@@ -98,9 +100,7 @@ export default {
   mounted() {
     this.init();
   },
-  beforeDestroy() {
-    // clearInterval(this.timer)
-  }
+  beforeDestroy() {}
 };
 </script>
 
