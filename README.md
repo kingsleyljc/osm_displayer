@@ -1,5 +1,8 @@
 # osm_displayer
 Display .osm file on the WEB browse, using Echarts and Bmap.
+！！！Pay attention. The coordinate in .osm file must be in format of WGS84.
+！！！osm文档中的坐标系为WGS84坐标系
+！！！程序已包含将WGS84转换为BD09的过程，所以可放心显示在百度地图上。
 
 # Dependency 依赖
 - Python 3
